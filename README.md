@@ -1,5 +1,9 @@
 # Sistem Manajemen Stok Tani (TaniChain)
 
+<p align="center">
+  <img src="screenshot.png" alt="Dashboard TaniChain" width="800">
+</p>
+
 Aplikasi sistem informasi pengelolaan stok hasil tani, pencatatan keuangan, dan data master petani yang terintegrasi dengan riwayat aktivitas digital (Audit Trail / konsep sederhana Blockchain).
 
 ## Fitur Utama
