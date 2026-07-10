@@ -1,1 +1,0 @@
-[06-Feb-2026 10:09:41 UTC] PHP Fatal error:  Cannot declare class AddKategoriToKeuanganTable, because the name is already in use in /home/kelom977/blockchain-stok/database/migrations/2026_02_06_123456_add_tanggal_to_keuangan_table.php on line 6
