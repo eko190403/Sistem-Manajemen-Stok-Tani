@@ -1,0 +1,43 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\ActivityLog;
+use Illuminate\Http\Request;
+
+class ActivityLogController extends Controller
+{
+    public function index(Request $request)
+    {
+        $query = ActivityLog::with('user')->orderBy('created_at', 'desc');
+        
+        // Filter by user
+        if ($request->filled('user_id')) {
+            $query->where('user_id', $request->user_id);
+        }
+        
+        // Filter by action
+        if ($request->filled('action')) {
+            $query->where('action', $request->action);
+        }
+        
+        // Filter by date
+        if ($request->filled('date_from')) {
+            $query->whereDate('created_at', '>=', $request->date_from);
+        }
+        if ($request->filled('date_to')) {
+            $query->whereDate('created_at', '<=', $request->date_to);
+        }
+        
+        $logs = $query->paginate(20);
+        $users = \App\Models\User::all();
+        
+        return view('admin.logs.index', compact('logs', 'users'));
+    }
+    
+    public function show($id)
+    {
+        $log = ActivityLog::with('user')->findOrFail($id);
+        return view('admin.logs.show', compact('log'));
+    }
+}
